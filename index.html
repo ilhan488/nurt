@@ -93,8 +93,38 @@ body{overflow-x:hidden}
   .thumb{border-radius:8px}
 }
 </style>
+
+<style>
+#startOverlay{
+  position:fixed; inset:0; z-index:9999;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(8,8,14,.88);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  transition:opacity .35s ease, visibility .35s ease;
+}
+#startOverlay.hidden{opacity:0; visibility:hidden; pointer-events:none;}
+#startOverlay .startCard{
+  text-align:center; color:white; padding:28px 34px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:24px; background:rgba(255,255,255,.08);
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+#startOverlay .playIcon{font-size:38px; margin-bottom:10px;}
+#startOverlay .startText{font-size:16px; letter-spacing:.5px;}
+#startOverlay .startSub{font-size:12px; opacity:.65; margin-top:7px;}
+</style>
+
 </head>
 <body>
+<div id="startOverlay">
+  <div class="startCard">
+    <div class="playIcon">▶</div>
+    <div class="startText">Tap to start ♡</div>
+    <div class="startSub">music will play automatically after this</div>
+  </div>
+</div>
+
 <div class="bg" id="bg"></div><div class="noise"></div>
 
 <div class="page">
@@ -122,7 +152,7 @@ body{overflow-x:hidden}
   </div>
 </div>
 
-<audio id="music" src="cinderella.mp3" preload="auto" loop></audio>
+<audio id="music" preload="auto" id="music" src="cinderella.mp3" preload="auto" loop></audio>
 
 <script>
 const photos = Array.from({length:7},(_,i)=>`photo${i+1}.jpeg`);
@@ -176,5 +206,44 @@ clock();setInterval(clock,1000);
 s.style.display=s.style.display==='block'?'none':'block';
 };
 </script>
+
+<script>
+(function () {
+  const audio = document.getElementById('music');
+  const startOverlay = document.getElementById('startOverlay');
+
+  async function startMusic() {
+    if (!audio) return;
+    try {
+      audio.muted = false;
+      await audio.play();
+      if (startOverlay) startOverlay.classList.add('hidden');
+    } catch (e) {
+      // iOS may still require another direct user gesture.
+    }
+  }
+
+  // Try autoplay on load (works where browser policy allows it).
+  window.addEventListener('load', () => {
+    if (audio) {
+      audio.muted = false;
+      audio.play().then(() => {
+        if (startOverlay) startOverlay.classList.add('hidden');
+      }).catch(() => {});
+    }
+  });
+
+  // Any first tap/click on the page starts the music.
+  ['touchstart', 'pointerdown', 'click'].forEach(evt => {
+    document.addEventListener(evt, startMusic, { once: true, passive: true });
+  });
+
+  if (startOverlay) {
+    startOverlay.addEventListener('click', startMusic);
+    startOverlay.addEventListener('touchend', startMusic, { passive: true });
+  }
+})();
+</script>
+
 </body>
 </html>
