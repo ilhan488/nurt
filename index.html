@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nurelyyana ♡</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0; min-height:100vh; font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#fff0f6,#f4efff,#eef8ff);
+  color:#4b4050; overflow-x:hidden;
+}
+.container{max-width:850px;margin:auto;padding:42px 18px 55px;text-align:center}
+.heart{font-size:48px;animation:float 2.5s ease-in-out infinite}
+h1{font-size:clamp(38px,9vw,70px);margin:8px 0;color:#9a6387}
+.subtitle{font-size:17px;line-height:1.7;max-width:620px;margin:0 auto 25px}
+.card{
+  background:rgba(255,255,255,.78);backdrop-filter:blur(10px);
+  border-radius:28px;padding:22px;box-shadow:0 15px 40px rgba(100,70,100,.12)
+}
+.slideshow{position:relative;max-width:560px;margin:auto;aspect-ratio:4/5;overflow:hidden;border-radius:22px;background:#eee}
+.slide{display:none;width:100%;height:100%}
+.slide img{width:100%;height:100%;object-fit:cover}
+.slide.active{display:block;animation:fade .5s}
+.controls{display:flex;justify-content:center;gap:10px;margin-top:16px}
+.dot{width:10px;height:10px;border:0;border-radius:50%;background:#d7bfd0;cursor:pointer;padding:0}
+.dot.active{background:#9a6387;transform:scale(1.25)}
+.message{font-size:17px;line-height:1.9;margin:27px auto 5px;max-width:620px}
+button.main{
+  margin-top:18px;border:0;border-radius:999px;padding:13px 24px;
+  background:#9a6387;color:white;font-size:16px;cursor:pointer;
+  box-shadow:0 8px 20px rgba(154,99,135,.25)
+}
+#secret{display:none;margin-top:20px;font-size:17px;line-height:1.8}
+footer{margin-top:28px;font-size:13px;opacity:.65}
+@keyframes fade{from{opacity:.2;transform:scale(1.02)}to{opacity:1;transform:scale(1)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="heart">♡</div>
+  <h1>Nurelyyana</h1>
+  <p class="subtitle">A little something, just because. 🌷</p>
+
+  <div class="card">
+    <div class="slideshow">
+      <div class="slide"><img src="photo1.jpeg" alt="Nurelyyana photo 1"></div>
+      <div class="slide"><img src="photo2.jpeg" alt="Nurelyyana photo 2"></div>
+      <div class="slide"><img src="photo3.jpeg" alt="Nurelyyana photo 3"></div>
+      <div class="slide"><img src="photo4.jpeg" alt="Nurelyyana photo 4"></div>
+      <div class="slide"><img src="photo5.jpeg" alt="Nurelyyana photo 5"></div>
+      <div class="slide"><img src="photo6.jpeg" alt="Nurelyyana photo 6"></div>
+    </div>
+
+    <div class="controls">
+      <button class="dot" onclick="showSlide(0)"></button>
+      <button class="dot" onclick="showSlide(1)"></button>
+      <button class="dot" onclick="showSlide(2)"></button>
+      <button class="dot" onclick="showSlide(3)"></button>
+      <button class="dot" onclick="showSlide(4)"></button>
+      <button class="dot" onclick="showSlide(5)"></button>
+    </div>
+
+    <p class="message">
+      Thank you sebab jadi diri kau yang kau. 🤍<br>
+      Semoga hari-hari kau dipenuhi dengan benda-benda yang buat kau senyum,
+      orang yang betul-betul hargai kau, dan banyak moment yang kau boleh simpan dalam hati.
+      <br><br>
+      <b>Keep being you. You’re doing better than you think. ♡</b>
+    </p>
+
+    <button class="main" onclick="reveal()">click kalau nak satu lagi 👀</button>
+    <div id="secret">
+      Okay fine 😭<br>
+      Kalau suatu hari kau rasa penat atau everything feels too much,
+      remember yang kau tak perlu handle everything seorang diri.
+      <br><br><b>Take care of yourself, okay? 🫶🏻</b>
+    </div>
+  </div>
+  <footer>made with a little bit of effort & lots of appreciation ♡</footer>
+</div>
+
+<script>
+let current=0;
+const slides=document.querySelectorAll('.slide');
+const dots=document.querySelectorAll('.dot');
+
+function showSlide(n){
+  current=(n+slides.length)%slides.length;
+  slides.forEach((s,i)=>s.classList.toggle('active',i===current));
+  dots.forEach((d,i)=>d.classList.toggle('active',i===current));
+}
+showSlide(0);
+setInterval(()=>showSlide(current+1),3500);
+
+function reveal(){
+  const s=document.getElementById('secret');
+  s.style.display=s.style.display==='block'?'none':'block';
+}
+</script>
+</body>
+</html>
