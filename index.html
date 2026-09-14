@@ -2,248 +2,173 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Nurelyyana ♡</title>
 <style>
 *{box-sizing:border-box}
-:root{
-  --pink:#f6b5cf;
-  --pink2:#ffd8e7;
-  --text:#f8f4f7;
-  --muted:#bdb5bd;
-  --glass:rgba(24,22,29,.62);
-  --line:rgba(255,255,255,.15);
-}
-html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:#09090d}
+html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#08080d;color:#fff}
 body{overflow-x:hidden}
-.bg{
-  position:fixed;inset:0;z-index:-3;
-  background:center/cover no-repeat url("photo1.jpeg");
-  filter:blur(24px) brightness(.42) saturate(.9);
-  transform:scale(1.12);
-  transition:background-image .7s ease;
-}
-.bg:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at center,transparent 0,rgba(5,5,9,.45) 55%,rgba(5,5,9,.9) 100%)}
-.noise{position:fixed;inset:0;z-index:-2;pointer-events:none;background:linear-gradient(120deg,rgba(255,255,255,.025),transparent 40%,rgba(255,190,220,.02))}
-.page{width:min(1120px,94vw);margin:auto;padding:34px 0 32px}
-.topbar{
-  height:72px;border:1px solid var(--line);background:rgba(20,18,25,.68);
-  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
-  border-radius:40px;display:flex;align-items:center;gap:18px;padding:10px 18px;
-  box-shadow:0 18px 50px rgba(0,0,0,.22)
-}
-.disc{width:44px;height:44px;border-radius:50%;background:#111;display:grid;place-items:center;border:1px solid #444;flex:none}
-.disc:before{content:"";width:13px;height:13px;border-radius:50%;background:#f36b9d;box-shadow:0 0 12px #f36b9d}
-.track{min-width:145px}.track b{display:block;font-size:15px}.track span{font-size:12px;color:var(--muted)}
-.progress{flex:1;height:4px;background:rgba(255,255,255,.16);border-radius:99px;position:relative}
-.progress i{display:block;width:38%;height:100%;background:var(--pink);border-radius:99px;box-shadow:0 0 10px rgba(246,181,207,.7)}
-.progress i:after{content:"";position:absolute;left:38%;top:50%;width:11px;height:11px;border-radius:50%;background:var(--pink2);transform:translate(-50%,-50%);box-shadow:0 0 10px rgba(246,181,207,.7)}
-.play{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:white;font-size:17px;cursor:pointer}
-.volume{font-size:15px;opacity:.9}.volbar{width:72px;height:4px;background:rgba(255,255,255,.16);border-radius:9px}.volbar i{display:block;width:70%;height:100%;background:var(--pink);border-radius:9px}
-.clock{margin-left:auto;color:#cfc9cf;font-size:13px;white-space:nowrap}
-
-.hero{display:grid;grid-template-columns:70px 1fr 70px;align-items:center;gap:18px;margin-top:26px}
-.arrow{
-  width:58px;height:58px;border-radius:50%;border:1px solid rgba(255,255,255,.3);
-  background:rgba(255,255,255,.055);color:white;font-size:35px;line-height:1;cursor:pointer;
-  transition:.2s;backdrop-filter:blur(10px)
-}
-.arrow:hover{background:rgba(255,255,255,.12);transform:scale(1.04)}
-.frame{
-  width:min(670px,100%);height:min(690px,65vh);min-height:430px;margin:auto;
-  border-radius:25px;overflow:hidden;border:1px solid rgba(255,255,255,.2);
-  background:#111;box-shadow:0 30px 70px rgba(0,0,0,.45)
-}
-.frame img{width:100%;height:100%;display:block;object-fit:cover;transition:opacity .2s}
-.counter{text-align:center;font-size:17px;margin:17px 0 18px;color:#eee}
-
-.thumbs{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
-.thumb{
-  aspect-ratio:3/4;border-radius:15px;overflow:hidden;border:1px solid rgba(255,255,255,.14);
-  opacity:.65;cursor:pointer;background:#111;transition:.2s
-}
+.bg{position:fixed;inset:0;z-index:0;background:center/cover no-repeat url("photo1.jpeg");filter:blur(24px) brightness(.38) saturate(.9);transform:scale(1.12);transition:background-image .45s ease}
+.shade{position:fixed;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.68),rgba(0,0,0,.18) 45%,rgba(0,0,0,.72))}
+.page{position:relative;z-index:2;min-height:100vh;padding:18px 14px 28px}
+.topbar{max-width:900px;margin:auto;display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid rgba(255,255,255,.15);background:rgba(15,15,22,.55);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:18px}
+.disc{width:42px;height:42px;border-radius:50%;flex:0 0 42px;background:radial-gradient(circle,#fff 0 7%,#f1a9c4 8% 18%,#28232c 19% 32%,#f1a9c4 33% 37%,#111 38%);box-shadow:0 0 0 2px rgba(255,255,255,.1)}
+.track{min-width:105px;display:flex;flex-direction:column;font-size:13px;line-height:1.15}
+.track b{font-size:14px}.track span{opacity:.58;font-size:11px;margin-top:3px}
+.progress{height:3px;flex:1;min-width:40px;background:rgba(255,255,255,.18);border-radius:10px;overflow:hidden}
+.progress i{display:block;width:0;height:100%;background:#f6b5cf}
+.play{width:40px;height:40px;border:0;border-radius:50%;background:#f6b5cf;color:#17131a;font-size:15px;cursor:pointer;touch-action:manipulation}
+.clock{font-size:12px;opacity:.6;white-space:nowrap}
+.title{text-align:center;margin:28px 0 12px;font-size:18px;letter-spacing:2px;color:#f7c9dc}
+.hero{max-width:900px;margin:auto;display:flex;align-items:center;justify-content:center;gap:10px}
+.frame{width:min(76vw,430px);height:min(72vh,650px);border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);box-shadow:0 24px 70px rgba(0,0,0,.45)}
+.frame img{width:100%;height:100%;display:block;object-fit:cover;transition:opacity .16s ease}
+.arrow{width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(15,15,22,.55);color:#fff;font-size:34px;line-height:1;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.arrow:active,.play:active{transform:scale(.94)}
+.counter{text-align:center;margin-top:10px;font-size:12px;opacity:.7}
+.thumbs{max-width:900px;margin:16px auto 0;display:flex;gap:8px;overflow-x:auto;padding:3px 2px 8px;scrollbar-width:none}
+.thumbs::-webkit-scrollbar{display:none}
+.thumb{flex:0 0 64px;height:64px;border-radius:12px;overflow:hidden;border:2px solid transparent;opacity:.68;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.thumb.active{border-color:#f6b5cf;opacity:1}
 .thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.thumb.active{opacity:1;border:2px solid var(--pink2);box-shadow:0 0 18px rgba(246,181,207,.25);transform:translateY(-2px)}
-
-.quote{
-  text-align:center;margin:45px auto 8px;max-width:850px;
-  letter-spacing:4px;font-size:13px;color:#ddd
-}
-.quote strong{font-weight:500}
-.quote .name{display:block;margin-top:10px;letter-spacing:1px;color:#f5c9da;font-size:12px}
-
-
-
-@media(max-width:760px){
-  .page{padding-top:18px}
-  .topbar{height:auto;min-height:68px;padding:9px 12px;gap:10px}
-  .disc{width:38px;height:38px}.track{min-width:100px}.track b{font-size:13px}.track span{font-size:11px}
-  .progress,.volume,.volbar,.clock{display:none}
-  .play{margin-left:auto}
-  .hero{grid-template-columns:48px 1fr 48px;gap:7px}
-  .arrow{width:45px;height:45px;font-size:28px}
-  .frame{height:61vh;min-height:420px;border-radius:20px}
-  .thumbs{gap:6px}.thumb{border-radius:10px}
-  .quote{margin-top:30px;font-size:11px;letter-spacing:2.5px}
-  .message{padding:22px 18px;font-size:14px}
-}
-@media(max-width:430px){
-  .frame{height:57vh;min-height:390px}
-  .thumbs{gap:4px}
-  .thumb{border-radius:8px}
+#startOverlay{position:fixed;inset:0;z-index:10;display:flex;align-items:center;justify-content:center;background:rgba(5,5,9,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:opacity .3s,visibility .3s}
+#startOverlay.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.startCard{text-align:center;padding:28px 34px;border:1px solid rgba(255,255,255,.16);border-radius:24px;background:rgba(255,255,255,.08)}
+.startCard .icon{font-size:36px;margin-bottom:8px}.startCard .txt{font-size:16px}.startCard .sub{font-size:12px;opacity:.6;margin-top:7px}
+@media(max-width:520px){
+ .topbar{gap:7px;padding:8px}.clock{display:none}
+ .frame{width:78vw;height:68vh}
+ .arrow{width:43px;height:43px;font-size:30px}
 }
 </style>
-
-<style>
-#startOverlay{
-  position:fixed; inset:0; z-index:9999;
-  display:flex; align-items:center; justify-content:center;
-  background:rgba(8,8,14,.88);
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
-  transition:opacity .35s ease, visibility .35s ease;
-}
-#startOverlay.hidden{opacity:0; visibility:hidden; pointer-events:none;}
-#startOverlay .startCard{
-  text-align:center; color:white; padding:28px 34px;
-  border:1px solid rgba(255,255,255,.16);
-  border-radius:24px; background:rgba(255,255,255,.08);
-  box-shadow:0 20px 60px rgba(0,0,0,.35);
-}
-#startOverlay .playIcon{font-size:38px; margin-bottom:10px;}
-#startOverlay .startText{font-size:16px; letter-spacing:.5px;}
-#startOverlay .startSub{font-size:12px; opacity:.65; margin-top:7px;}
-</style>
-
 </head>
 <body>
+<div class="bg" id="bg"></div>
+<div class="shade"></div>
+
 <div id="startOverlay">
   <div class="startCard">
-    <div class="playIcon">▶</div>
-    <div class="startText">Tap to start ♡</div>
-    <div class="startSub">music will play automatically after this</div>
+    <div class="icon">▶</div>
+    <div class="txt">Tap to start ♡</div>
+    <div class="sub">music will start after you tap</div>
   </div>
 </div>
 
-<div class="bg" id="bg"></div><div class="noise"></div>
-
-<div class="page">
+<main class="page">
   <div class="topbar">
     <div class="disc"></div>
     <div class="track"><b>Cinderella</b><span>Ty Dolla $ign</span></div>
     <div class="progress"><i id="progress"></i></div>
-    <button class="play" id="playBtn" aria-label="Play or pause music">▶</button>
-    <div class="volume">⌕</div><div class="volbar"><i></i></div>
+    <button class="play" id="playBtn" type="button" aria-label="Play or pause music">▶</button>
     <div class="clock" id="clock"></div>
   </div>
 
-  <div style="text-align:center;margin:26px 0 4px;font-size:18px;letter-spacing:2px;color:#f5c9da;">Nurelyyana ♡</div>
+  <div class="title">Nurelyyana ♡</div>
 
   <div class="hero">
-    <button class="arrow" id="prev" aria-label="Previous photo">‹</button>
+    <button class="arrow" id="prev" type="button" aria-label="Previous photo">‹</button>
     <div>
-      <div class="frame"><img id="mainPhoto" src="photo1.jpeg" alt="Nurelyyana photo"></div>
+      <div class="frame"><img id="mainPhoto" src="photo1.jpeg" alt="Photo 1"></div>
       <div class="counter"><span id="count">1</span> / 7</div>
     </div>
-    <button class="arrow" id="next" aria-label="Next photo">›</button>
+    <button class="arrow" id="next" type="button" aria-label="Next photo">›</button>
   </div>
 
   <div class="thumbs" id="thumbs"></div>
-  </div>
-</div>
+</main>
 
-<audio id="music" preload="auto" id="music" src="cinderella.mp3" preload="auto" loop></audio>
-
-<script>
-const photos = Array.from({length:7},(_,i)=>`photo${i+1}.jpeg`);
-let current = 0;
-const main = document.getElementById('mainPhoto');
-const bg = document.getElementById('bg');
-const count = document.getElementById('count');
-const thumbs = document.getElementById('thumbs');
-const music = document.getElementById('music');
-const playBtn = document.getElementById('playBtn');
-
-photos.forEach((src,i)=>{
-  const d=document.createElement('div'); d.className='thumb'+(i===0?' active':'');
-  d.innerHTML=`<img src="${src}" alt="Photo ${i+1}">`;
-  d.onclick=()=>show(i);
-  thumbs.appendChild(d);
-});
-
-function show(i){
-  current=(i+photos.length)%photos.length;
-  main.style.opacity='0';
-  setTimeout(()=>{
-    main.src=photos[current];
-    bg.style.backgroundImage=`url("${photos[current]}")`;
-    main.style.opacity='1';
-  },90);
-  count.textContent=current+1;
-  [...thumbs.children].forEach((x,n)=>x.classList.toggle('active',n===current));
-}
-document.getElementById('prev').onclick=()=>show(current-1);
-document.getElementById('next').onclick=()=>show(current+1);
-
-// Auto-slide every 1 second.
-setInterval(()=>show(current+1),1000);
-
-// Try autoplay; iPhone/Safari may block audible autoplay until user taps.
-window.addEventListener('load', async()=>{
-  try{await music.play();playBtn.textContent='❚❚';}catch(e){playBtn.textContent='▶';}
-});
-playBtn.onclick=async()=>{
-  if(music.paused){try{await music.play();playBtn.textContent='❚❚';}catch(e){}}
-  else{music.pause();playBtn.textContent='▶';}
-};
-
-// Simple live clock.
-function clock(){
-  const d=new Date();
-  document.getElementById('clock').textContent=d.toLocaleTimeString([], {hour:'numeric',minute:'2-digit'});
-}
-clock();setInterval(clock,1000);
-s.style.display=s.style.display==='block'?'none':'block';
-};
-</script>
+<audio id="music" src="cinderella.mp3" preload="auto" loop></audio>
 
 <script>
-(function () {
-  const audio = document.getElementById('music');
-  const startOverlay = document.getElementById('startOverlay');
+(() => {
+  const photos = Array.from({length:7}, (_,i) => `photo${i+1}.jpeg`);
+  let current = 0;
+  let slideTimer = null;
+
+  const main = document.getElementById('mainPhoto');
+  const bg = document.getElementById('bg');
+  const count = document.getElementById('count');
+  const thumbs = document.getElementById('thumbs');
+  const music = document.getElementById('music');
+  const playBtn = document.getElementById('playBtn');
+  const progress = document.getElementById('progress');
+  const overlay = document.getElementById('startOverlay');
+
+  photos.forEach((src, i) => {
+    const d = document.createElement('button');
+    d.type = 'button';
+    d.className = 'thumb' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', `Photo ${i+1}`);
+    d.innerHTML = `<img src="${src}" alt="Photo ${i+1}">`;
+    d.addEventListener('click', () => show(i, true));
+    thumbs.appendChild(d);
+  });
+
+  function show(i, userAction=false) {
+    current = (i + photos.length) % photos.length;
+    main.style.opacity = '0';
+    setTimeout(() => {
+      main.src = photos[current];
+      bg.style.backgroundImage = `url("${photos[current]}")`;
+      main.style.opacity = '1';
+    }, 100);
+    count.textContent = current + 1;
+    [...thumbs.children].forEach((x,n) => x.classList.toggle('active', n === current));
+    if (userAction) {
+      const active = thumbs.children[current];
+      if (active) active.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+    }
+  }
+
+  document.getElementById('prev').addEventListener('click', () => show(current - 1, true));
+  document.getElementById('next').addEventListener('click', () => show(current + 1, true));
+
+  // Reliable 1-second slideshow.
+  slideTimer = setInterval(() => show(current + 1), 1000);
+
+  function updatePlayButton() {
+    playBtn.textContent = music.paused ? '▶' : '❚❚';
+  }
 
   async function startMusic() {
-    if (!audio) return;
     try {
-      audio.muted = false;
-      await audio.play();
-      if (startOverlay) startOverlay.classList.add('hidden');
+      await music.play();
+      updatePlayButton();
+      overlay.classList.add('hidden');
     } catch (e) {
-      // iOS may still require another direct user gesture.
+      updatePlayButton();
     }
   }
 
-  // Try autoplay on load (works where browser policy allows it).
+  // Attempt autoplay where the browser allows it.
   window.addEventListener('load', () => {
-    if (audio) {
-      audio.muted = false;
-      audio.play().then(() => {
-        if (startOverlay) startOverlay.classList.add('hidden');
-      }).catch(() => {});
-    }
+    music.play().then(() => {
+      updatePlayButton();
+      overlay.classList.add('hidden');
+    }).catch(() => updatePlayButton());
   });
 
-  // Any first tap/click on the page starts the music.
-  ['touchstart', 'pointerdown', 'click'].forEach(evt => {
-    document.addEventListener(evt, startMusic, { once: true, passive: true });
+  // iPhone requires a user gesture for audible playback.
+  overlay.addEventListener('click', startMusic);
+  overlay.addEventListener('touchend', startMusic, {passive:true});
+  playBtn.addEventListener('click', async () => {
+    if (music.paused) await startMusic();
+    else { music.pause(); updatePlayButton(); }
   });
 
-  if (startOverlay) {
-    startOverlay.addEventListener('click', startMusic);
-    startOverlay.addEventListener('touchend', startMusic, { passive: true });
+  music.addEventListener('timeupdate', () => {
+    if (music.duration) progress.style.width = `${(music.currentTime / music.duration) * 100}%`;
+  });
+  music.addEventListener('ended', updatePlayButton);
+
+  function clock() {
+    const d = new Date();
+    document.getElementById('clock').textContent =
+      d.toLocaleTimeString([], {hour:'numeric', minute:'2-digit'});
   }
+  clock();
+  setInterval(clock, 1000);
 })();
 </script>
-
 </body>
 </html>
